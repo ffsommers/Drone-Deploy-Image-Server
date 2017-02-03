@@ -1,0 +1,11 @@
+{
+  "name": "tile-image-server",
+  "version": "1.0.0",
+  "description": "image server for generating pdfs of dronedeploy map tiles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ffsommers",
+  "license": "ISC"
+}
