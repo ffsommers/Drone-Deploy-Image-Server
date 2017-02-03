@@ -22,3 +22,24 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.post('/tiles/', cors(corsOptions), function (req, res, next) {
+	var encodedTiles = [];
+	var completed_requests = 0;
+	var data = req.body.tile;
+	for (var i=0; i < data.length; i++){
+     request(data[i], function(err, res, body){
+     	var toBase64 = body.toString('base64');
+        encodedTiles.push(toBase64);
+        completed_requests++;   	
+	    if (completed_requests == data.length){
+	    	sendResonse();
+	    }
+	 });  
+	  
+
+	}
+	function sendResonse(){
+		res.json(encodedTiles);
+	}
+})
